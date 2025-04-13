@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reassessment and  Rechecking</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    
+    body {
+      background: linear-gradient(45deg, rgb(64, 147, 172), hsl(283, 42%, 67%)); 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #3a4a7e;  
+      padding: 15px 30px;
+      border-bottom: 2px solid white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .header .logo {
+      width: 80px;
+      height: auto;
+    }
+
+    .header h1 {
+      font-size: 26px;
+      font-weight: bold;
+      color: #fff;  
+      text-transform: uppercase;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    
+    .home-button {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: left;
+      width: 100%;
+      padding: 10px 10px;
+    }
+
+    .home-button a {
+      text-decoration: none;
+      background: #6c5b7b;
+      color: white;
+      padding: 12px 24px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 8px;
+      border: none;
+      display: inline-block;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      transition: 0.3s;
+    }
+
+    .home-button a:hover {
+      background: #503d5c;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .marquee-container {
+      width: 100%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid black;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-top: -10px;
+      margin-bottom: 30px;
+      height: 50px;
+    }
+
+    .marquee-container marquee {
+      color: black;
+    }
+
+    .update-header {
+      background-color: #333;  
+      color: white;  
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-right: 10px;  
+      border: 2px solid #000;  
+    }
+
+    
+    .box-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 90%;
+      max-width: 500px;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+      margin-top: 20px;
+    }
+
+    
+    .box {
+      width: 100%;
+      background: #f8f8f8;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      border: 2px solid #6c5b7b;
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+      transition: 0.3s;
+    }
+
+    .box:hover {
+      box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 10px;
+    }
+
+    
+    .buttons .apply-btn {
+      background: blue;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      transition: 0.2s;
+    }
+
+    .buttons .apply-btn:hover {
+      background: darkblue;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    }
+
+  
+    .buttons .fill-form-btn {
+      background:darkblue;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+      transition: 0.2s;
+    }
+
+    .buttons .fill-form-btn:hover {
+      background: darkgreen;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    footer {
+      width: 100%;
+      text-align: center;
+      background-color: #6c5b7b;
+      color: white;
+      padding: 15px 0;
+      font-size: 16px;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <img src="gpologo.jpg" alt="GP Logo" class="logo">
+    <h1>Government Polytechnic Dharashiv</h1>
+    <img src="msbtelogo.PNG" alt="Right Logo" class="logo">
+  </div>
+
+  
+  <div class="home-button">
+    <a href="studentloginhomepage.html">Back to HOME</a>
+  </div>
+
+  <div class="marquee-container">
+    <span class="update-header">LATEST UPDATES:</span>
+    <marquee behavior="scroll" direction="left" scrollamount="6">
+      Rechecking & Reassessment Last date to Apply 28-01-2025 | 
+    </marquee>
+  </div>
+
+ 
+  <div class="box-container">
+    <div class="box">
+      <h3>REASSESSMENT</h3><br>
+      <div class="buttons">
+        <a href="https://online.msbte.co.in/msbte24/index.php?act=exam_login" class="apply-btn">Apply</a>
+        <a href="ReassesmentForm.html" class="fill-form-btn">Fill Form</a>
+      </div>
+    </div>
+    <div class="box">
+    <h3> RECHECKING</h3><br>
+      <div class="buttons">
+        <a href="https://online.msbte.co.in/msbte24/index.php?act=exam_login" class="apply-btn">Apply</a>
+        <a href="RecheckingForm.html" class="fill-form-btn">Fill Form</a>
+      </div>
+    </div>
+  </div>
+<br><br>
+  <footer>
+    @ Government Polytechnic Dharashiv
+  </footer>
+
+</body>
+</html>

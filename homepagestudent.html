@@ -1,0 +1,212 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Homepage</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    
+    body {
+      background: linear-gradient(45deg, #b58ecd, #5b9bd5); 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+   
+    .header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #3a4a7e;  
+      padding: 15px 30px;
+      border-bottom: 2px solid white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .header .logo {
+      width: 80px;
+      height: auto;
+    }
+
+    .header h1 {
+      font-size: 26px;
+      font-weight: bold;
+      color: #fff;  
+      text-transform: uppercase;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+   
+    .nav-bar {
+      width: 100%;
+      background: #6c5b7b; 
+      text-align: center;
+      padding: 12px 0;
+      font-size: 18px;
+    }
+
+    .nav-bar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      display: inline-block;
+      font-weight: bold;
+    }
+
+    .nav-bar a:hover {
+      background: #503d5c;
+      border-radius: 5px;
+    }
+
+    
+    .home-label {
+      width: 100%;
+      padding: 10px 30px;
+      font-size: 18px;
+      color: #333;
+      text-align: left;
+      margin-top: 15px;
+      margin-bottom: 10px;
+    }
+
+    .home-label a {
+      color: #333;
+      text-decoration: none;
+      font-weight: normal; 
+      padding: 0; 
+      background: none; 
+      border: none; 
+    }
+
+    .home-label a:hover {
+      text-decoration: underline;
+    }
+
+   
+    .marquee-container {
+      width: 100%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border: 2px solid black;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-top: -10px;
+      margin-bottom: 30px;
+      height: 50px;
+    }
+
+    .marquee-container marquee {
+      color: black;
+    }
+
+    .update-header {
+      background-color: #333;  
+      color: white;  
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-right: 10px;  
+      border: 2px solid #000;  
+    }
+
+    
+    .content {
+      display: flex;
+      flex-direction: column; 
+      align-items: center; 
+      margin-top: 20px;
+    }
+
+    .container {
+      width: 300px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: white;
+      font-size: 20px;
+      font-weight: bold;
+      color: black;
+      margin: 15px;
+      border-radius: 15px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .container:hover {
+      transform: translateY(-5px);
+      box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4);
+    }
+    .no-underline {
+    text-decoration: none;
+    color: black; 
+}
+.no-underline:visited {
+    color: blue;  
+}
+.no-underline:hover {
+    color: green;  
+}
+    footer {
+      width: 100%;
+      text-align: center;
+      background-color: #6c5b7b;
+      color: white;
+      padding: 15px 0;
+      font-size: 16px;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  
+  <div class="header">
+    <img src="gpologo.jpg" alt="GP Logo" class="logo">
+    <h1>Government Polytechnic Dharashiv</h1>
+    <img src="msbtelogo.PNG" alt="Right Logo" class="logo">
+  </div>
+
+  
+  <div class="home-label">
+    <a href="#">Back to HOME</a>
+  </div>
+
+ 
+  <div class="marquee-container">
+    <span class="update-header">LATEST UPDATES:</span>
+    <marquee behavior="scroll" direction="left" scrollamount="6">
+      Admissions Open! | Rechecking & Reassessment Available | Apply Now!
+    </marquee>
+  </div>
+
+  
+  <div class="content">
+    <div class="container"><a href="admissionpage.html" class="no-underline">ADMISSION</a></div>
+    <div class="container"><a href="ReassesandRecheck.html"class="no-underline">REASSESSMENT / RECHECKING</a></div>
+    <div class="container"><a href="https://online.msbte.co.in/msbte24/index.php?act=exam_login" class="no-underline">EXAMINATION FORM FILLING</a></div>
+  </div>
+
+ 
+  <footer>
+    Government Polytechnic Dharashiv
+  </footer> 
+
+</body>
+</html>
+

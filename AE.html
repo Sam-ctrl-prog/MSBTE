@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AE6thsem Marks Form</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+
+    form {
+        max-width: 800px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input, select, button {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    button {
+        background-color: #007BFF;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <center><h2>AE6thsem Marks Form</h2></center>
+    <form id="studentForm">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="roll_no">Roll Number</label>
+          <input type="number" id="roll_no" name="roll_no" required>
+        </div>
+        <div class="form-group">
+          <label for="exam_seat">Exam Seat</label>
+          <input type="text" id="exam_seat" name="exam_seat" required>
+        </div>
+        <div class="form-group">
+          <label for="enrollment">Enrollment</label>
+          <input type="text" id="enrollment" name="enrollment" required>
+        </div>
+        <div class="form-group">
+          <label for="candidate_name">Candidate Name</label>
+          <input type="text" id="candidate_name" name="candidate_name" required>
+        </div>
+        <div class="form-group">
+          <label for="branch">Branch</label>
+          <input type="text" id="branch" name="branch" required>
+        </div>
+        <div class="form-group">
+          <label for="sem">Semester</label>
+          <input type="text" id="sem" name="sem" required>
+        </div>
+      </div>
+
+      <!-- Subject Marks -->
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="MAN_TH_ESE">MAN TH ESE</label>
+          <input type="number" id="MAN_TH_ESE" name="MAN_TH_ESE" required>
+        </div>
+        <div class="form-group">
+          <label for="MAN_TH_PA">MAN TH PA</label>
+          <input type="number" id="MAN_TH_PA" name="MAN_TH_PA" required>
+        </div>
+        <div class="form-group">
+          <label for="HPC_TH_ESE">HPC TH ESE</label>
+          <input type="number" id="HPC_TH_ESE" name="HPC_TH_ESE" required>
+        </div>
+        <div class="form-group">
+          <label for="HPC_TH_PA">HPC TH PA</label>
+          <input type="number" id="HPC_TH_PA" name="HPC_TH_PA" required>
+        </div>
+        <div class="form-group">
+          <label for="HPC_PR_ESE">HPC PR ESE</label>
+          <input type="number" id="HPC_PR_ESE" name="HPC_PR_ESE" required>
+        </div>
+        <div class="form-group">
+          <label for="HPC_PR_PA">HPC PR PA</label>
+          <input type="number" id="HPC_PR_PA" name="HPC_PR_PA" required>
+        </div>
+        <!-- Add other subjects as needed -->
+      </div>
+
+      <!-- Overall Performance -->
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="obtained_marks">Obtained Marks</label>
+          <input type="number" id="obtained_marks" name="obtained_marks" required>
+        </div>
+        <div class="form-group">
+          <label for="failed_subjects">Failed Subjects</label>
+          <input type="number" id="failed_subjects" name="failed_subjects" required>
+        </div>
+        <div class="form-group">
+          <label for="result">Result</label>
+          <input type="text" id="result" name="result" required>
+        </div>
+        <div class="form-group">
+          <label for="percentage">Percentage</label>
+          <input type="number" id="percentage" name="percentage" required>
+        </div>
+        <div class="form-group">
+          <label for="rank">Rank</label>
+          <input type="number" id="rank" name="rank" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+    <p id="message"></p> <!-- Success/Error message here -->
+  </div>
+
+  <script>
+    document.getElementById('studentForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const formData = new FormData(this);
+
+        fetch('http://localhost:3000/submit', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById('message').textContent = 'Form submitted successfully!';
+            } else {
+                document.getElementById('message').textContent = 'Error submitting form.';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('message').textContent = 'Error submitting form.';
+        });
+    });
+  </script>
+</body>
+</html>

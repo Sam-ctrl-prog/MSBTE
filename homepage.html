@@ -1,0 +1,325 @@
+
+<html lang="en">
+<head>
+    
+    <title>Student Management System</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F7F8FC;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            padding: 20px;
+        }
+
+        /* Notification Bar */
+        .notification-bar {
+            background-color: #FF9F00;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.2em;
+            font-weight: 600;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            left: 0;
+            z-index: 1000;
+        }
+
+      
+        .notification-close {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .notification-close:hover {
+            color: #FFB84D; }
+         .sidebar {
+            background: #1F2937;
+            color: #FFFFFF;
+            width: 250px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+        }
+
+        .sidebar h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #9CA3AF;
+            font-weight: 500;
+            display: block;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .sidebar ul li a:hover, .sidebar ul li a.active {
+            background: #3B82F6;
+            color: #FFFFFF;
+        }
+
+       
+        .main-content {
+            margin-left: 270px; /* Sidebar width */
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            display: flex;
+            justify-content: center;  /* Center content horizontally */
+            align-items: center;      /* Center content vertically */
+            height: 100%;
+            flex-direction: column;   /* Center buttons vertically */
+        }
+
+        /* Header */
+        .header {
+            background-color: #1E40AF; /* Deep blue */
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin-top: 60px; /* Added to make space for the notification bar */
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #D1D5DB; /* Light gray */
+        }
+
+        .header a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 10px 20px;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .header a:hover {
+            border-bottom: 2px solid #38BDF8; /* Light blue accent */
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        /* Button Styles */
+        .btn {
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            width: 250px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .admin-btn {
+            background-color: #3498db; /* Blue for Admin */
+        }
+
+        .admin-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .student-btn {
+            background-color: #95a5a6; /* Grey for Student */
+        }
+
+        .student-btn:hover {
+            background-color: #7f8c8d;
+        }
+
+        /* Overview Section */
+        .overview-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            width: 80%;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .overview-card {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .overview-card h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1E40AF;
+        }
+
+        .overview-card p {
+            font-size: 1.2rem;
+            color: #6B7280;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1E40AF;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.1rem;
+            margin-top: auto;
+        }
+
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .overview-section {
+                grid-template-columns: 1fr;
+                width: 100%;
+            }
+
+            .overview-card h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Notification Bar with Close Button -->
+    <div class="notification-bar">
+        Winter 2024 result on 28th of January!!!
+        <button class="notification-close" onclick="closeNotification()">×</button>
+    </div>
+
+    <!-- Dashboard Layout -->
+    <div style="display: flex; width: 100%;"> 
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Dashboard</h2>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="https://econtent.msbte.edu.in/question_papers/">PYQ (Previous Year Question Papers)</a></li>
+                <li><a href="#">Hall Ticket</a></li>
+                <li><a href="#">Result</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <h1>Welcome to the Student Management System</h1>
+                <p>Manage students, courses, and exams all in one place</p>
+            </div>
+
+            <!-- Overview Section -->
+            <div class="overview-section">
+                <div class="overview-card">
+                    <h3>1000</h3>
+                    <p>Students Enrolled</p>
+                </div>
+                <div class="overview-card">
+                    <h3>7</h3>
+                    <p>Active Courses</p>
+                </div>
+                <div class="overview-card">
+                    <h3>Result</h3>
+                    <p>2 of our students got into Prestigious <l><b> COEP</b> </l></p>
+                </div>
+            </div>
+
+            <!-- Admin and Student Buttons -->
+            <div class="button-container">
+                <button class="btn admin-btn">Admin Login</button>
+                <button class="btn student-btn">Student Login</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    
+    <footer>
+       Government Polytechnic
+    </footer>
+
+    <script>
+        
+        function closeNotification() {
+            document.querySelector('.notification-bar').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

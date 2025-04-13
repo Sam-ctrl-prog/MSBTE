@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Admission Form</title>
+    <style>
+          * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+        .header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #3a4a7e;  
+            padding: 15px 30px;
+            border-bottom: 2px solid white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .logo {
+            width: 80px;
+            height: auto;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            font-weight: bold;
+            color: #fff;  
+            text-transform: uppercase;
+            text-align: center;
+            flex-grow: 1;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #d4f8e8, #e6d4f8, #d4e6f8);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 70%; 
+            margin: auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 12px;
+        }
+
+        select, input, textarea {
+            width: calc(100% - 8px); 
+            padding: 10px;
+            margin: 3px 0; 
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .radio-group {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 5px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: linear-gradient(to right, #4CAF50, #3a9bd9);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: linear-gradient(to right, #3a9bd9, #4CAF50);
+        }
+    </style>
+</head>
+<body>
+    <div class="header"> 
+        <img src="AICTE.jpg" alt="GP Logo" class="logo">
+        <h1>Government Polytechnic Dharashiv</h1>
+        <img src="msbtlogo.jpeg" alt="Right Logo" class="logo">
+    </div>
+    <br><br>
+    <div class="form-container">
+        <h2>ADMISSION FORM</h2>
+        <hr style="border: none; border-top: 3px solid #333;">
+        <br>
+        <form>
+            <label for="applicationId">Application ID:</label>
+            <input type="text" id="applicationId" name="applicationId" required>
+
+            <label for="academicYear">Select Admission Year:</label>
+            <select id="academicYear" name="academicYear" required>
+                <option value="" selected disabled>Select Year</option>
+                <option value="2024-2025">2024-2025</option>
+            </select>
+
+            <label for="fullName">Full Name (Surname Name Father Name):</label>
+            <input type="text" id="fullName" name="fullName" required>
+
+            <label>Gender:</label>
+            <div class="radio-group">
+                <input type="radio" id="male" name="gender" value="Male"> <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female"> <label for="female">Female</label>
+            </div>
+
+            <label for="branch">Select Course/Branch:</label>
+            <select id="branch" name="branch" required>
+                <option value="" selected disabled>Select Branch</option>
+                <option value="automobile">Automobile Engineering</option>
+                <option value="civil">Civil Engineering</option>
+                <option value="computer">Computer Engineering</option>
+                <option value="electrical">Electrical Engineering</option>
+                <option value="electronics">Electronics and Telecommunication</option>
+                <option value="mechanical">Mechanical Engineering</option>
+            </select>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="open">Open</option>
+                <option value="sc">SC</option>
+                <option value="st">ST</option>
+                <option value="vjdt">VJDT</option>
+                <option value="ntb">NT(B)</option>
+                <option value="ntc">NT(C)</option>
+                <option value="ntd">NT(D)</option>
+                <option value="obc">OBC</option>
+                <option value="sbc">SBC</option>
+                <option value="sebc">SEBC</option>
+            </select>
+
+            <label for="tenthGrades">10th Standard Grades:</label>
+            <input type="text" id="tenthGrades" name="tenthGrades" required>
+
+            <label for="phone">Phone No:</label>
+            <input type="number" id="phone" name="phone" pattern="\d{10}" required>
+
+            <label for="parentPhone">Parent's Phone No:</label>
+            <input type="number" id="parentPhone" name="parentPhone" pattern="\d{10}" required>
+
+            <label for="email">Email ID:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="address">Permanent Address:</label>
+            <textarea id="address" name="address" rows="3" required></textarea>
+
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+

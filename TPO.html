@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TPO Module</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00aaff, #1e3a8a);
+            color: #fff;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Notification Bar */
+        .notification-bar {
+            background-color: #ff9f00;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.1em;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .notification-bar a {
+            color: #003366;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 0 5px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .notification-bar a:hover {
+            color: white;
+            background-color: #003366;
+        }
+
+        .notification-bar .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            color: white;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .notification-bar .close-btn:hover {
+            transform: scale(1.2);
+            color: #ffd700;
+        }
+
+        .notification-bar.hide {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: transparent;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .navbar li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #ffdd57;
+            transform: scale(1.1);
+        }
+
+        /* Section Containers */
+        /* Section Containers */
+.section-container {
+    padding: 40px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 90%; /* Increased width for more content space */
+    max-width: 1200px; /* Restrict width for larger screens */
+    text-align: center;
+}
+
+
+        /* Job Listings */
+        .job-card {
+            background: #ffffff;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .apply-btn {
+            background-color: #1e3a8a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .apply-btn:hover {
+            background-color: #00aaff;
+            transform: scale(1.05);
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        input {
+            padding: 10px;
+            border: 2px solid #0077cc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        button[type="submit"] {
+            background-color: #1e3a8a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #00aaff;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            .navbar li {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .section-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Notification Bar -->
+    <div class="notification-bar" id="notification-bar">
+        🌟 Welcome! Don't miss the TPO's latest updates and opportunities. Check the <a href="#job-listings">Job Listings</a> now! 🌟
+        <button class="close-btn" id="close-notification">X</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="navbar">
+            <h1>Welcome to the TPO Module</h1>
+            <nav>
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#job-listings">Job Listings</a></li>
+                    <li><a href="#registration">Student Registration</a></li>
+                    <li><a href="home.html">Home Page</a></li>
+                    <li><a href="https://udemy.com">Resources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="section-container">
+        <h2>Dashboard</h2>
+        <p>Access job listings, training schedules for final year students.</p>
+    </section>
+
+    <!-- Job Listings Section -->
+    <section id="job-listings" class="section-container">
+        <h2>Job Listings</h2>
+        <div class="job-card">
+            <h3>Tata Power</h3>
+            <p>Location: Mumbai</p>
+            <button class="apply-btn">Apply Now</button>
+        </div>
+        <div class="job-card">
+            <h3>L&T</h3>
+            <p>Location: Pune</p>
+            <button class="apply-btn">Apply Now</button>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="registration" class="section-container">
+        <h2>Student Registration</h2>
+        <form id="registration-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required>
+            <label for="department">Department:</label>
+            <input type="text" id="department" name="department" required>
+            <button type="submit">Register</button>
+        </form>
+        <div id="message"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Government Polytechnic TPO Cell</p>
+    </footer>
+
+    <script>
+        // Notification Bar Close
+        document.getElementById("close-notification").addEventListener("click", function () {
+            const notificationBar = document.getElementById("notification-bar");
+            notificationBar.classList.add("hide");
+            setTimeout(() => notificationBar.style.display = "none", 300);
+        });
+
+        // Registration Form Submission
+        document.getElementById("registration-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                department: document.getElementById('department').value
+            };
+            fetch('/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                const messageDiv = document.getElementById('message');
+                messageDiv.textContent = data.success ? 'Registration successful!' : 'Registration failed. Please try again.';
+            })
+            .catch(error => {
+                document.getElementById('message').textContent = 'An error occurred. Please try again.';
+            });
+        });
+    </script>
+</body>
+</html>

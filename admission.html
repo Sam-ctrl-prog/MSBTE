@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission</title>
+    <style>
+       
+        .header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #3a4a7e;  
+            padding: 15px 30px;
+            border-bottom: 2px solid white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .logo {
+            width: 80px;
+            height: auto;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            font-weight: bold;
+            color: #fff;  
+            text-transform: uppercase;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+       
+        .marquee-container {
+            width: 100%;
+            background: #f3f3f3;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 2px solid #3a4a7e;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            height: 40px; 
+        }
+
+        .marquee-container marquee {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+        }
+
+      
+        .back-to-home {
+            background: blue;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 20px 0 10px 30px;
+        }
+
+        .back-to-home:hover {
+            background: blue;
+        }
+
+       
+        .outer-box {
+            width: 70%;
+            margin: 50px auto;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        
+        .container {
+            width: 45%;  
+            margin: 10px auto; 
+            padding: 25px; 
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: linear-gradient(145deg, #e6e6e6, #ffffff);  
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+            font-size: 18px; 
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        h3 {
+            color: #333;
+            font-size: 24px; 
+            margin-bottom: 15px; }
+
+        
+        .btn {
+            display: block;
+            margin: 15px auto;  
+            padding: 12px 25px;  
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 18px;  
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        
+        .footer {
+            text-align: center;
+            background: #3a4a7e;
+            color: white;
+            padding: 25px 0;  
+            width: 100%;
+            margin-top: 30px;
+            font-size: 18px;  
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    
+    <div class="header"> 
+        <img src="AICTE.jpeg" alt="GP Logo" class="logo">
+        <h1>Government Polytechnic Dharashiv</h1>
+        <img src="msbtelogo.jpg" alt="Right Logo" class="logo">
+    </div>
+
+   
+    <div class="marquee-container">
+        <marquee behavior="scroll" direction="left" scrollamount="6">
+            Admissions Open! | Rechecking & Reassessment Available | Apply Now!
+        </marquee>
+    </div>
+    <a href="studentloginhomepage.html" class="back-to-home">Back to Home</a>
+
+    
+    <div class="outer-box">
+        <div class="container">
+            <h3>New Admission</h3>
+            <button class="btn"onclick="window.location.href='1styr.html';">Fill Form</button>
+        </div>
+
+        <div class="container">
+            <h3>Second Year Admission</h3>
+            <button class="btn" onclick="window.location.href='2nd_3rdyr.html';">Fill Form</button>
+        </div>
+
+        <div class="container">
+            <h3>Third Year Admission</h3>
+            <button class="btn" onclick="window.location.href='2nd_3rdyr.html';">Fill Form</button>
+        </div>
+    </div>
+
+    
+    <div class="footer">
+        <p>&copy; 2025 <a href="#">Government Polytechnic Dharashiv</a>. All rights reserved.</p>
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Certificate</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1f4e79;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #1f4e79;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        button:hover {
+            background-color: #155b88;
+        }
+
+        #tc-details {
+            margin-top: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .error-message {
+            color: red;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Transfer Certificate</h1>
+        <form id="tc-form">
+            <label for="enrollmentNo">Enrollment Number:</label>
+            <input type="text" id="enrollmentNo" name="enrollmentNo" placeholder="Enter Enrollment Number" required>
+            <button type="submit">Fetch TC Details</button>
+        </form>
+
+        <div id="tc-details"></div>
+
+        <!-- Buttons for actions -->
+        <div class="button-group hidden" id="action-buttons">
+            <button id="generate-pdf">Generate PDF</button>
+            <button id="print-pdf">Print</button>
+            <a id="download-link" href="#" download="Transfer_Certificate.pdf">
+                <button id="download-pdf">Download</button>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Government Polytechnic of Dharashiv
+    </footer>
+
+    <script>
+        document.getElementById('tc-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const enrollmentNo = document.getElementById('enrollmentNo').value;
+
+            fetch(`/fetch_tc?enrollmentNo=${enrollmentNo}`)
+                .then(response => response.json())
+                .then(data => {
+                    const tcDetailsDiv = document.getElementById('tc-details');
+                    const actionButtons = document.getElementById('action-buttons');
+
+                    if (data.success) {
+                        const student = data.data[0];
+                        tcDetailsDiv.innerHTML = `
+                            <p><strong>Enrollment No:</strong> ${student.EnrollmentNo}</p>
+                            <p><strong>Name:</strong> ${student.Name}</p>
+                            <p><strong>Race/Caste:</strong> ${student.RaceCaste}</p>
+                            <p><strong>Nationality:</strong> ${student.Nationality}</p>
+                            <p><strong>Place of Birth:</strong> ${student.PlaceOfBirth}</p>
+                            <p><strong>Date of Birth:</strong> ${student.DOB}</p>
+                            <p><strong>Last Attended School:</strong> ${student.LastAttendedSchool}</p>
+                            <p><strong>Date of Admission:</strong> ${student.DateOfAdmission}</p>
+                            <p><strong>Progress:</strong> ${student.Progress}</p>
+                            <p><strong>Conduct:</strong> ${student.Conduct}</p>
+                            <p><strong>Date of Leaving:</strong> ${student.DateOfLeaving}</p>
+                            <p><strong>Course Year:</strong> ${student.CourseYear}</p>
+                            <p><strong>Reason for Leaving:</strong> ${student.ReasonForLeaving}</p>
+                            <p><strong>Remark:</strong> ${student.Remark}</p>
+                        `;
+
+                        // Show buttons
+                        actionButtons.classList.remove('hidden');
+
+                        // Update download link
+                        const downloadLink = document.getElementById('download-link');
+                        downloadLink.href = `/download_pdf?filePath=TC.pdf`;
+                    } else {
+                        tcDetailsDiv.innerHTML = `<p class="error-message">${data.message}</p>`;
+                        actionButtons.classList.add('hidden');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching TC details:', error);
+                    const tcDetailsDiv = document.getElementById('tc-details');
+                    tcDetailsDiv.innerHTML = '<p class="error-message">Error fetching TC details. Please try again later.</p>';
+                    document.getElementById('action-buttons').classList.add('hidden');
+                });
+        });
+
+        document.getElementById('generate-pdf').addEventListener('click', function() {
+            const enrollmentNo = document.getElementById('enrollmentNo').value;
+
+            fetch(`/generate_pdf?enrollmentNo=${enrollmentNo}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('PDF generated successfully!');
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error generating PDF:', error);
+                    alert('Error generating PDF. Please try again later.');
+                });
+        });
+
+        document.getElementById('print-pdf').addEventListener('click', function() {
+            window.open(`/generate_pdf?enrollmentNo=${document.getElementById('enrollmentNo').value}`, '_blank');
+        });
+    </script>
+</body>
+</html>

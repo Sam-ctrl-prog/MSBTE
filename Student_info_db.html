@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            background-color: #f7f9fc;
+            color: #333;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: #1e293b;
+            color: white;
+            width: 250px;
+            padding: 20px;
+            height: 100vh;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+
+        .sidebar ul li a {
+            color: #f3f4f6;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            border-radius: 8px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background-color: #f8fafc;
+        }
+
+        .main-content h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: #1e40af;
+        }
+
+        .tree-container {
+            text-align: center;
+        }
+
+        .tree ul {
+            list-style-type: none;
+            display: inline-block;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .tree li {
+            margin: 15px 0;
+            font-size: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            color: #1e40af;
+            transition: color 0.3s;
+        }
+
+        .tree li:hover {
+            color: #3b82f6;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table th, table td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        table th {
+            background-color: #1e40af;
+            color: white;
+            font-size: 18px;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f4f9fc;
+        }
+
+        table tr:hover {
+            background-color: #e2e8f0;
+        }
+
+        /* Message Box */
+        .message {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Student Information</h2>
+        <ul>
+            <li><a href="#" onclick="showBranch('computer')">Computer Engineering</a></li>
+            <li><a href="#" onclick="showBranch('electrical')">Electrical Engineering</a></li>
+            <li><a href="#" onclick="showBranch('electronics')">Electronics Engineering</a></li>
+            <li><a href="#" onclick="showBranch('automobile')">Automobile Engineering</a></li>
+            <li><a href="#" onclick="showBranch('mechanical')">Mechanical Engineering</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Welcome to the Student Section</h1>
+        <div id="content-container" class="tree-container">
+            <p class="message">Select a department from the sidebar to view details.</p>
+        </div>
+    </div>
+
+    <script>
+        const branches = {
+            computer: "Computer Engineering",
+            electrical: "Electrical Engineering",
+            electronics: "Electronics Engineering",
+            automobile: "Automobile Engineering",
+            mechanical: "Mechanical Engineering"
+        };
+
+        function showBranch(branch) {
+            const branchName = branches[branch];
+            const container = document.getElementById("content-container");
+            container.innerHTML = `
+                <h2>${branchName}</h2>
+                <div class="tree">
+                    <ul>
+                        <li onclick="fetchStudents('${branch}', 'First Year')">First Year</li>
+                        <li onclick="fetchStudents('${branch}', 'Second Year')">Second Year</li>
+                        <li onclick="fetchStudents('${branch}', 'Third Year')">Third Year</li>
+                    </ul>
+                </div>
+            `;
+        }
+
+        async function fetchStudents(branch, year) {
+            const container = document.getElementById("content-container");
+            container.innerHTML = `<h2>${branches[branch]} - ${year}</h2><p class="message">Loading students...</p>`;
+
+            // Simulate fetching data from a database
+            const response = await fetch(`fetch_students.php?branch=${branch}&year=${year}`);
+            const students = await response.json();
+
+            if (students.length > 0) {
+                let tableHTML = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Roll No</th>
+                                <th>Name</th>
+                                <th>Year</th>
+                                <th>Branch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+
+                students.forEach(student => {
+                    tableHTML += `
+                        <tr>
+                            <td>${student.roll_no}</td>
+                            <td>${student.name}</td>
+                            <td>${student.year}</td>
+                            <td>${student.branch}</td>
+                        </tr>
+                    `;
+                });
+
+                tableHTML += "</tbody></table>";
+                container.innerHTML += tableHTML;
+            } else {
+                container.innerHTML += "<p class='message'>No students found for this selection.</p>";
+            }
+        }
+    </script>
+
+</body>
+</html>
