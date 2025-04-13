@@ -1,0 +1,320 @@
+/* Remove default margins and paddings */
+html, body {
+  margin: 0;
+  padding: 0;
+  
+}
+
+/* Style for the top division */
+#top-division {
+  position: fixed; /* Keeps the div at the top even while scrolling */
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  background-color: #333; /* Example background color */
+  color: white; /* Text color */
+  height: 50px; /* Height of the division */
+  z-index: 1000; /* Ensure it stays on top of other content */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center content horizontally */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Optional shadow for style */
+}
+
+    
+    #s_div{
+        height:60px;
+        width:100%;
+      
+        background: linear-gradient(to bottom, #333, #ccc);
+    }
+    .container{
+        display:flex;
+        
+        justify-content:space-evenly;
+     
+    }
+    #divl1{
+        width:100%;
+        height:70px;
+        background-color:white;
+        margin-bottom:0px;
+        position:relative;
+        top: 0px; /* Moves the div 20px down */
+        left: 10px; 
+    }
+    #div1{
+        width:500px;
+        height:60px;
+        
+    }
+
+    #main_div{
+  margin-left:0px;
+        width:100%;
+        height:700px; 
+        box-sizing:border-box;
+        
+        
+    }
+    
+    #nav1{
+    
+        
+       
+    }
+    
+    .nav_item{
+        display:flex;
+        text-decoration: none; /* Remove underline from links */
+        backgorund-color: white;
+      
+    }
+    
+    #li1,#li2,#li3,#li4{
+    
+        margin-left:50px;
+        margin-top:40px;
+
+    
+    }
+    
+    #a1,#a2,#a3,#a4{
+    
+       height:50px;
+       width:30px;
+       margin-bottom:1000px;
+    }
+    
+    #a1:hover{
+
+        background-color:yellow;
+       
+        color:beige;
+    }
+    
+    
+    #img_box1,#img_box2,#img_box3,#img_box4{
+        width:100%;
+    
+        height: 70px; /* Maintain the aspect ratio of the image */
+        display:flex;
+        border-radius:50%; 
+        justify-content: space-evenly;
+      
+    
+    }
+    /* Style for the slider container */
+    .slider {
+        position: relative;
+        width: 1250px; /* Full width */
+        height:700px;
+        overflow: hidden; /* Hide overflow */
+      }
+      
+      /* Style for the slides container */
+      .slides {
+        display: flex; /* Arrange slides in a row */
+        transition: transform 0.5s ease-in-out; /* Smooth transition */
+      }
+      
+      /* Style for each slide */
+      .slide {
+        min-width: 100%; /* Each slide takes full width */
+        box-sizing: border-box; /* Include padding and border in element's total width and height */
+        
+      }
+      .blurred{
+        filter:blur(4px);
+        -webkit-filter: blur(4px);
+        z-index: 0;
+      }
+      
+      /* Style for images */
+      .slide img {
+        width: 1276px; /* Image fills slide */
+        height: 600px; /* Maintain aspect ratio */
+    
+      }
+      #New_title{
+        position: absolute;
+        top: 50%; /* Adjust position */
+        left: 50%;
+        transform: translate(-50%, -200%);
+        
+        font-size: 60px; /* Adjust font size */
+        font-weight: bold;
+        background-color: none; /* Add background for contrast */
+        padding: 5px;
+        text-align:center;
+        font-family: 'Arial', sans-serif; /* Custom font */
+        font-size: 48px; /* Adjust size */
+        color: #e0fbfc ; /* Text color */
+        text-align: center; /* Center the title */
+        font-weight: bold; /* Make it bold */
+        letter-spacing: 2px; /* Add some space between letters */
+        text-transform: uppercase; /* Make it uppercase */
+       
+        font-weight: bold;
+        -webkit-background-clip: text;
+      }
+      #New_info{
+        position: absolute;
+        top: 60%; /* Adjust position */
+        left: 50%;
+        transform: translate(-50%, -190%);
+        font-size: 19px; /* Adjust font size */
+        font-weight:bold;
+        background-color: none; /* Add background for contrast */
+        padding: 5px;
+        text-align:center;
+        font-family: 'Times New Roman'; /* Custom font */
+       
+        color: #d9dcd6; /* Text color */
+        text-align: center; /* Center the title */
+       
+        letter-spacing: 1px; /* Add some space between letters */
+        text-transform: capitalize; /* Make it uppercase */
+    
+        -webkit-background-clip: text;
+      }
+
+      .button1 {
+        border-radius: 16px; /* Consistent rounded corners */
+        display: inline-block; /* Aligns buttons in a line */
+        background-color: #cdb4db; /* Button background */
+        border: none; /* Removes default border */
+        color: black; /* Button text color */
+        width: 100px; /* Set button width */
+        height: 40px; /* Set button height */
+        margin: 4px 10px; /* Space between buttons */
+        padding: 10px; /* Inner spacing inside button */
+        text-align: center; /* Centers text inside button */
+        /* Removes underline */
+        cursor: pointer; /* Adds pointer on hover */
+        transform: translate(300%, -370%);
+    }
+    .button1:hover {
+      background-color: orange; /* Match button hover background */
+      
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+
+    
+    #just{
+      height:10px;
+      width:1240px;
+      background-color:blue;
+    }
+#b1{
+    margin-left:0px;
+    margin-top:10px;
+    background-color: #cdb4db !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+#b2{
+    margin-left:100px;
+    background-color: #cdb4db !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#b3{
+  margin-left:90px;
+  background-color: #cdb4db !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#nav_img {
+    height:40px; /* Adjust image height */
+    width: 90px; /* Maintain aspect ratio */
+    margin-right: 10px; /* Add space after the image */
+}
+/* Style for the unordered list */
+.uli {
+  list-style-type: circle;
+  display: flex; /* Arrange list items in a row */
+  justify-content: flex-start; /* Align list items to the left */
+  align-items: center; /* Center align vertically */
+  margin-left:600px;
+  margin-top:0px;
+  padding: 0;
+  color: #5a5a5a;
+  font-family: 'Arial', sans-serif;
+  font-size: 15px;
+  height: 50px; /* Adjust height for spacing */
+}
+
+
+.li1 {
+  color: #333333;
+  background-color: #caf0f8;
+  height: 35px; /* Slightly reduce height for better alignment */
+  line-height: 35px; /* Adjust line height accordingly */
+  display: flex;
+  justify-content: center; /* Center align text inside list items */
+  align-items: center;
+  margin-left: 30px; /* Space between list items */
+  text-align: center;
+  padding: 0 10px; /* Padding for spacing */
+  border-radius: 8px; /* Smooth edges */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth hover effects */
+  margin-left:20px;
+}
+
+
+/* Hover effect for list items */
+.li1:hover {
+  background-color: E38E49; /* Match button hover background */
+  color: #ffffff; /* Change text to white */
+  transform: scale(1.05); /* Slight enlargement */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+}
+
+#logo {
+  width: 70px;
+  height:90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.t_div {
+  display: flex;
+ 
+  align-items: center; /* Center align items vertically */
+  margin-bottom: 100px;
+}
+   #img1 {
+    height: 70px;
+    width: 90px;
+    margin-left: 20px; 
+    margin-top:-12px;/* Add space between img1 and img2 */
+  } 
+  #pp{
+    color:black;
+  }
+    
+  #img2 {
+    height: 50px;
+    width: 50px;
+    margin-left: 10px; 
+    margin-top:-15px;/* Add space between img2 and the list */
+  }
+  #header {
+    display: flex;
+    align-items: center;
+    
+   /* Center horizontally */
+    background-color: white !important;
+    /* Optional background */
+    padding: 10px; /* Add padding for spacing */
+    
+  }
+      
+    
+    
+      
+    
+    
